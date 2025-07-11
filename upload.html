@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+  <style>
+    .upload-container {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #4b8b3b;
+      margin-bottom: 20px;
+    }
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #4b8b3b;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #3a6d2e;
+    }
+    .message {
+      color: green;
+      font-weight: bold;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+    img.preview {
+      max-width: 100%;
+      margin-top: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #4b8b3b;
+      font-weight: bold;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <div class="upload-container">
+    <h2>Upload Crop Image</h2>
+
+    {% if message %}
+      <p class="message">{{ message }}</p>
+    {% endif %}
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required>
+      <button type="submit">Upload</button>
+    </form>
+
+    {% if filename %}
+      <h3>Preview:</h3>
+      <img src="{{ url_for('static', filename='uploads/' ~ filename) }}" alt="Uploaded Image" class="preview">
+    {% endif %}
+
+    <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+  </div>
+{% endblock %}

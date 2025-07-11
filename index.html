@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .home-links {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .home-links a {
+    padding: 14px 28px;
+    background-color: #4b8b3b;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  .home-links a:hover {
+    background-color: #3a6d2e;
+  }
+</style>
+
+<div class="home-links">
+  <a href="/login">Login</a>
+  <a href="/register">Register</a>
+</div>
+{% endblock %}
